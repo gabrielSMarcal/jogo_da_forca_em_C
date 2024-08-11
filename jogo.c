@@ -114,6 +114,45 @@ int chutou(char letra) {
     return achou;
 }
 
+void adicionapalavra() {
+
+    char quer;
+
+    printf("Deseja incluir uma palavra no jogo? (S/N)");
+    scanf(" %c", &quer);
+
+    if (quer == 'S') {
+
+        char novapalavra [20];
+        printf("Qual a nova Palavra?");
+        scanf("%s", novapalavra);
+
+        FILE* f;
+
+        //Abre o arquivo para leitura e edição
+        f = fopen("palavras.txt", "r+");
+        if(f == 0) {
+            printf("Banco de dados não localizado\n\n");
+            exit(1);
+        }
+
+        //Determina que a primeira linha, que é uma int de número de palavras, precisará ser adicionada +1 na condição de 'S'
+        int qt;
+        fscanf(f, "%d", &qt);
+        qt++;
+
+        //Define o ponteiro para ser apontado no bit 0 para aplicar a lógica acima
+        fseek(f, 0, SEEK_SET);
+        fprintf(f, "%d", qt);
+
+        //Define agora o ponteiro para o final do arquivo, que será a útilma linha vazia, e escreva a nova palavra no arquivo txt
+        fseek(f, 0, SEEK_END);
+        fprintf(f, "\n%s", novapalavra);
+
+        fclose(f);
+    }
+}
+
 int main () {
     //Funções iniciais
     palavraselecionada();
@@ -125,7 +164,8 @@ int main () {
         chute();
         
     } while(!ganhou() && !enforcou());
-    
+
+    adicionapalavra();
     
     return 0;
 }

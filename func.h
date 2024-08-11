@@ -1,4 +1,5 @@
 //Funções Globais para impedir erro de ordem
+void adicionapalavra();
 void chute();
 void desenhaforca();
 void intro();
