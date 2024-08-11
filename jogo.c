@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 char palavrasecreta[20];
 char chutes [26];
 int tentativas = 0;
