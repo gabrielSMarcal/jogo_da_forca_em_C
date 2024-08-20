@@ -10,14 +10,16 @@ char palavrasecreta[TAMANHO_PALAVRA];
 char chutes [26];
 int chutesdados = 0;
 
-void intro() {
+void intro()
+{
 
     printf("/*********************/\n");
     printf("/*   Jogo da Forca   */\n");
     printf("/*********************/\n\n");
 }
 
-void chute() {
+void chute()
+{
    
     char chute;
 
@@ -27,7 +29,8 @@ void chute() {
     chutesdados++;
 }
 
-void desenhaforca() {
+void desenhaforca()
+{
 
     int erros = chuteserrados();
 
@@ -55,7 +58,8 @@ void desenhaforca() {
     printf("\n");
 }
 
-void palavraselecionada() {
+void palavraselecionada() 
+{
 
     FILE* f;
 
@@ -81,7 +85,8 @@ void palavraselecionada() {
     fclose(f);
 }
 
-int chuteserrados() {
+int chuteserrados()
+{
 
     int erros = 0;
 
@@ -102,12 +107,14 @@ int chuteserrados() {
     return erros++;
 }
 
-int enforcou() {
+int enforcou()
+{
 
     return chuteserrados() >= 5;
 }
 
-int ganhou() {
+int ganhou()
+{
 
     for(int i=0; i<strlen(palavrasecreta); i++){
         if(!chutou(palavrasecreta[i])){
@@ -118,7 +125,8 @@ int ganhou() {
     return 1;
 }
 
-int chutou(char letra) {
+int chutou(char letra)
+{
 
     int achou = 0;
 
@@ -132,7 +140,8 @@ int chutou(char letra) {
     return achou;
 }
 
-void adicionapalavra() {
+void adicionapalavra()
+{
 
     char quer;
 
@@ -171,7 +180,8 @@ void adicionapalavra() {
     }
 }
 
-int main () {
+int main (void)
+{
     //Funções iniciais
     palavraselecionada();
     intro();
@@ -205,6 +215,4 @@ int main () {
             printf("_|___            \n");
             printf("\n\n");
     }
-    
-    return 0;
 }
